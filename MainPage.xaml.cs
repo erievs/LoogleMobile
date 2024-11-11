@@ -13,12 +13,18 @@ namespace LooglePlusMobile
         private static readonly HttpClient client = new HttpClient();
         private int currentPage = 1;
         private bool isLoading = false;
-
+        public Color PageBackgroundColor { get; set; }
         public MainPage()
         {
             InitializeComponent();
             BindingContext = this;
             _ = LoadPosts(currentPage); 
+
+
+        var isDarkMode = Application.Current.RequestedTheme == AppTheme.Dark;
+
+        PageBackgroundColor = isDarkMode ? Color.FromArgb("#121212") : Color.FromArgb("#e5e5e5");
+
         }
 
         private async Task LoadPosts(int page)

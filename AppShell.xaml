@@ -5,14 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:LooglePlusMobile"
     Shell.FlyoutBehavior="Disabled"
-    Title="LooglePlusMobile">
+    Title="LooglePlusMobile"
+    >
 
     <Shell.TitleView>
         <Frame
-            BackgroundColor="#f6f6f6"
             BorderColor="Transparent"
             HasShadow="True"
-            Padding="10,0">
+            Padding="0,0">
             <Image 
                 Source="logo.png" 
                 HorizontalOptions="Start" 
