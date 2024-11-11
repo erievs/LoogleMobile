@@ -18,7 +18,7 @@ namespace LooglePlusMobile
         {
             InitializeComponent();
             BindingContext = this;
-            LoadPosts(currentPage); 
+            _ = LoadPosts(currentPage); 
         }
 
         private async Task LoadPosts(int page)
@@ -58,8 +58,19 @@ namespace LooglePlusMobile
                                 Username = element.GetProperty("username").GetString() ?? string.Empty,
                                 Content = element.GetProperty("content").GetString() ?? string.Empty,
                                 CreatedAt = DateTime.Parse(element.GetProperty("created_at").GetString() ?? DateTime.MinValue.ToString()),
-                                ImageUrl = element.GetProperty("image_url").GetString() ?? string.Empty
+                                ImageUrl = element.GetProperty("image_url").GetString() ?? string.Empty,
+                                AuthorPfpUrl = element.GetProperty("profile_image_url").GetString() ?? string.Empty
                             };
+
+                            var comments = element.GetProperty("comments").EnumerateArray().Select(commentElement => new Comment
+                            {
+                                Username = commentElement.GetProperty("username").GetString() ?? string.Empty,
+                                CommentContent = commentElement.GetProperty("comment_content").GetString() ?? string.Empty,
+                                CommentTime = DateTime.Parse(commentElement.GetProperty("comment_time").GetString() ?? DateTime.MinValue.ToString()),
+                                ProfileImageUrl = commentElement.GetProperty("profile_image_url").GetString() ?? string.Empty,
+                            }).ToList();
+
+                            post.Comments = comments;
 
                             newPosts.Add(post);
                         }
@@ -93,63 +104,164 @@ namespace LooglePlusMobile
         }
         private View CreatePostView(Post post)
         {
-           
-            string imageUrl = post.ImageUrl.StartsWith("http://loogle.cc") ? post.ImageUrl : "http://loogle.cc" + post.ImageUrl;
+            var isDarkMode = Application.Current.RequestedTheme == AppTheme.Dark;
 
-            System.Diagnostics.Debug.WriteLine(imageUrl);
+            var commentsLayout = new StackLayout
+            {
+                Spacing = 8,
+            };
+
+            foreach (var comment in post.Comments)
+            {
+                var commentLayout = new StackLayout
+                {
+                    Spacing = 4,
+                    Children =
+                    {
+                        new StackLayout
+                        {
+                            Orientation = StackOrientation.Horizontal,
+                            Spacing = 8,
+                            Children =
+                            {
+                                new Image
+                                {
+                                    Source = !string.IsNullOrEmpty(comment.ProfileImageUrl) ? comment.ProfileImageUrl : "default_pfp.png", 
+                                    WidthRequest = 30,
+                                    HeightRequest = 30,
+                                    Aspect = Aspect.AspectFill,
+                                    VerticalOptions = LayoutOptions.Center
+                                },
+                                new StackLayout
+                                {
+                                    VerticalOptions = LayoutOptions.Center,
+                                    Children =
+                                    {
+                                        new Label
+                                        {
+                                            Text = comment.Username,
+                                            FontSize = 14,
+                                            FontAttributes = FontAttributes.Bold,
+                                            FontFamily = "ProductSansBold",
+                                            TextColor = isDarkMode ? Colors.White : Colors.Black,
+                                            VerticalOptions = LayoutOptions.Center
+                                        },
+                                        new Label
+                                        {
+                                            Text = comment.CommentTime.ToString("MMM dd, yyyy HH:mm"),
+                                            FontSize = 12,
+                                            FontFamily = "ProductSansRegular",
+                                            TextColor = isDarkMode ? Colors.Gray : Colors.DarkGray,
+                                            VerticalOptions = LayoutOptions.Center
+                                        }
+                                    }
+                                }
+                            }
+                        },
+
+                        new Label
+                        {
+                            Text = comment.CommentContent,
+                            FontSize = 14,
+                            FontFamily = "ProductSansRegular", 
+                            TextColor = isDarkMode ? Colors.White : Colors.Black,
+                            HorizontalOptions = LayoutOptions.Start,
+                            LineBreakMode = LineBreakMode.WordWrap
+                        }
+                    }
+                };
+
+                commentsLayout.Children.Add(commentLayout);
+            }
 
             return new Frame
             {
-                Margin = new Thickness(10, 5),
-                BorderColor = Colors.Black,
+                Margin = new Thickness(0, 0, 0, 8), 
                 CornerRadius = 0,
-                HasShadow = true,
+                BackgroundColor = isDarkMode ? Color.FromArgb("#1E1E1E") : Color.FromArgb("#f6f6f6"),
+
+                Shadow = new Shadow
+                {
+                    Offset = new Microsoft.Maui.Graphics.Point(0, 1),
+                    Radius = 3,
+                    Opacity = 0.1f,
+                },
                 Content = new StackLayout
                 {
-                    Padding = 10,
-                    Spacing = 10,
+                    Padding = new Thickness(8), 
+                    Spacing = 8, 
                     Children =
                     {
-                        new Label
+                        new StackLayout
                         {
-                            Text = post.Username,
-                            FontSize = 16,
-                            FontAttributes = FontAttributes.Bold,
-                            TextColor = Colors.Black,
-                            HorizontalOptions = LayoutOptions.Start
+                            Orientation = StackOrientation.Horizontal,
+                            Spacing = 8, 
+                            Children =
+                            {
+                                new Image
+                                {
+                                    Source = !string.IsNullOrEmpty(post.AuthorPfpUrl) ? post.AuthorPfpUrl : "default_pfp.png", 
+                                    WidthRequest = 40,
+                                    HeightRequest = 40,
+                                    Aspect = Aspect.AspectFill,
+                                    VerticalOptions = LayoutOptions.Center
+                                },
+                                new StackLayout
+                                {
+                                    VerticalOptions = LayoutOptions.Center,
+                                    Children =
+                                    {
+                                        new Label
+                                        {
+                                            Text = post.Username,
+                                            FontSize = 16,
+                                            FontAttributes = FontAttributes.Bold,
+                                            FontFamily = "ProductSansBold",
+                                            TextColor = isDarkMode ? Colors.White : Colors.Black,
+                                            VerticalOptions = LayoutOptions.Center
+                                        },
+                                        new Label
+                                        {
+                                            Text = post.CreatedAt.ToString("MMM dd, yyyy"), 
+                                            FontSize = 12,
+                                            FontFamily = "ProductSansRegular",
+                                            TextColor = isDarkMode ? Colors.Gray : Colors.DarkGray,
+                                            VerticalOptions = LayoutOptions.Center
+                                        }
+                                    }
+                                }
+                            }
                         },
-                        new Label
-                        {
-                            Text = post.CreatedAt.ToString("MMMM dd, yyyy"),
-                            FontSize = 12,
-                            TextColor = Colors.Gray,
-                            HorizontalOptions = LayoutOptions.Start
-                        },
+
                         new Label
                         {
                             Text = post.Content,
                             FontSize = 14,
-                            TextColor = Colors.Black,
+                            FontFamily = "ProductSansRegular", 
+                            TextColor = isDarkMode ? Colors.White : Colors.Black,
                             HorizontalOptions = LayoutOptions.Start,
                             LineBreakMode = LineBreakMode.WordWrap
                         },
+
                         new Image
                         {
-                            Source = imageUrl, // Use the updated imageUrl
+                            Source = !string.IsNullOrEmpty(post.ImageUrl) ? post.ImageUrl : null,
                             HeightRequest = 200,
                             Aspect = Aspect.AspectFill,
                             IsVisible = !string.IsNullOrEmpty(post.ImageUrl),
-                            Margin = new Thickness(0, 10, 0, 0)
-                        }
+                            Margin = new Thickness(0, 8, 0, 0) 
+                        },
+
+                        commentsLayout 
                     }
                 }
             };
         }
-
-
         private async void OnScrollViewScrolled(object sender, ScrolledEventArgs e)
         {
             var scrollView = sender as ScrollView;
+
+            if (scrollView == null) return;
 
             var contentHeight = scrollView.ContentSize.Height;
             var visibleHeight = scrollView.Height;
@@ -166,4 +278,5 @@ namespace LooglePlusMobile
             }
         }
     }
+    
 }

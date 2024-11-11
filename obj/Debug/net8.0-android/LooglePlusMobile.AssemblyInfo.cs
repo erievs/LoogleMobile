@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LooglePlusMobile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+2d56fdc2e02966828cbdcbaccadc1f4151f13243")]
 [assembly: System.Reflection.AssemblyProductAttribute("LooglePlusMobile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LooglePlusMobile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

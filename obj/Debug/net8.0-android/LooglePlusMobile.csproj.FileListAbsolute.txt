@@ -1040,10 +1040,6 @@
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/bin/Debug/net8.0-android/Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/bin/Debug/net8.0-android/Microsoft.VisualStudio.DesignTools.TapContract.dll
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/LooglePl.7148DB99.Up2Date
-/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/assets/arm64-v8a/System.Private.CoreLib.dll
-/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/assets/armeabi-v7a/System.Private.CoreLib.dll
-/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/assets/x86/System.Private.CoreLib.dll
-/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/assets/x86_64/System.Private.CoreLib.dll
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/typemaps.x86_64.ll
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/environment.x86_64.ll
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/compressed_assemblies.x86_64.ll
@@ -1053,3 +1049,15 @@
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/marshal_methods.x86_64.o
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/android/jni_remap.x86_64.o
 /home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/app_shared_libraries/x86_64/libxamarin-app.so
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/LooglePlusMobile.sourcelink.json
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/Catull-Bold.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/Catull.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/Product Sans Bold Italic.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/Product Sans Bold.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/Product Sans Italic.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/Product Sans Regular.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/ProductSans-Bold-Italic.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/ProductSans-Bold.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/ProductSans-Italic.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/f/ProductSans-Regular.ttf
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/obj/Debug/net8.0-android/resizetizer/r/drawable/logo.png

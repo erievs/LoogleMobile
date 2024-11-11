@@ -7,9 +7,22 @@
     Shell.FlyoutBehavior="Disabled"
     Title="LooglePlusMobile">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.TitleView>
+        <Frame
+            BackgroundColor="#f6f6f6"
+            BorderColor="Transparent"
+            HasShadow="True"
+            Padding="10,0">
+            <Image 
+                Source="logo.png" 
+                HorizontalOptions="Start" 
+                VerticalOptions="Center" 
+                HeightRequest="40" />
+        </Frame>
+    </Shell.TitleView>
 
+    <ShellContent
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage"
+        Icon="logo.png" />
 </Shell>

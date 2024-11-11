@@ -1,0 +1,4 @@
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/bin/Release/net8.0-android/publish/com.companyname.loogleplusmobile-Signed.aab
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/bin/Release/net8.0-android/publish/com.companyname.loogleplusmobile.aab
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/bin/Release/net8.0-android/publish/com.companyname.loogleplusmobile-Signed.apk
+/home/ksportalcraft/Documents/Dotnet/LooglePlusMobile/bin/Release/net8.0-android/publish/_Microsoft.Android.Resource.Designer.dll
